@@ -9,10 +9,11 @@ import java.util.Set;
 
 public class String11 {
 
+    // Все ли символы встречаются только один раз
     public static void main(String[] args) {
-        System.out.println(solution("wertyt"));
-        System.out.println(solution("asdfghj"));
-        System.out.println(solution("eeee"));
+        System.out.println(solution1("wertyt"));
+        System.out.println(solution1("asdfghj"));
+        System.out.println(solution1("eeee"));
 
         System.out.println();
 
@@ -21,7 +22,7 @@ public class String11 {
         System.out.println(solution2("eeee"));
     }
 
-    public static boolean solution(String s) {
+    public static boolean solution1(String s) {
         if (s == null || s.isEmpty()) {
             return false;
         }
