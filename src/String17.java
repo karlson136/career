@@ -7,9 +7,8 @@ import java.util.Arrays;
 
 public class String17 {
 
-    // есть матрица NxN. Это пиксели. Повернуть изображение на 90 градусов
-
     /*
+        есть матрица NxN. Это пиксели. Повернуть изображение на 90 градусов
 
         [0, 0, 0, 0, 0]         [4, 3, 2, 1, 0]
         [1, 1, 1, 1, 1]         [4, 3, 2, 1, 0]
@@ -19,35 +18,27 @@ public class String17 {
 
      */
     public static void main(String[] args) {
-//        print(createImage(3), solution1(createImage(3)));
-//        print(createImage(4), solution1(createImage(4)));
+        print(createImage(3), solution1(createImage(3)));
+        print(createImage(4), solution1(createImage(4)));
         print(createImage(5), solution1(createImage(5)));
     }
 
     public static long[][] solution1(long[][] image) {
         long thirdGlass;
         int dim = image.length;
+        int border = dim % 2 == 0 ? dim / 2 : dim / 2 + 1;
+
         for (int i = 0; i < dim / 2; i++) {
-            for (int j = 0; j < dim / 2; j++) {
-                thirdGlass = image[i][j];
-                image[i][j] = image[dim - i - 1][j];
-                image[dim - i - 1][j] = image[dim - i - 1][dim - j - 1];
-                image[dim - i - 1][dim - j - 1] = image[i][dim - j - 1];
-                image[i][dim - j - 1] = thirdGlass;
+            for (int j = 0; j < border; j++) {
+                thirdGlass = image[i][j]; // save top
+                image[i][j] = image[dim - j - 1][i]; // left -> top
+                image[dim - j - 1][i] = image[dim - i - 1][dim - j - 1]; // bottom -> left
+                image[dim - i - 1][dim - j - 1] = image[j][dim - i - 1]; // right -> bottom
+                image[j][dim - i - 1] = thirdGlass; // top -> right
             }
         }
-
-
         return image;
     }
-
-    /*
-    [0, 1, 2, 3, 4]
-    [5, 6, 7, 8, 9]
-    [0, 1, 2, 3, 4]
-    [5, 6, 7, 8, 9]
-    [0, 1, 2, 3, 4]
-     */
 
     public static long[][] createImage(int dim) {
         long[][] image = new long[dim][dim];
