@@ -1,4 +1,4 @@
-/*
+package string;/*
  * Copyright
  * Andrei Razhkou
  */

@@ -1,11 +1,7 @@
-/*
+package string;/*
  * Copyright
  * Andrei Razhkou
  */
-
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 public class String13 {
 
